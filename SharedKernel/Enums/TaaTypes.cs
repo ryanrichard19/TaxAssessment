@@ -1,4 +1,4 @@
-﻿namespace DAL.Enums
+﻿namespace SharedKernal.Enums
 {
     public enum TaxType
     {

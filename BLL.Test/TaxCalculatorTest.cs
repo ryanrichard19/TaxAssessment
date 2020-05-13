@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
+using Core;
 using NUnit.Framework;
 
-namespace BLL.Test
+namespace SharedKernal.Test
 {
     [TestFixture]
     public class TaxCalculatorTest

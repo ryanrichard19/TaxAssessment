@@ -1,13 +1,16 @@
 
 using System.Threading.Tasks;
-using BLL;
-using BLL.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Core;
+using Infrastructure;
+using Core.Interfaces;
+using Infrastructure.Data;
 
 namespace BackEndAPI
 {
@@ -23,12 +26,17 @@ namespace BackEndAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-           
+            services.AddDbContext<ApplicationDbContext>(options =>
+            { 
+                options.UseSqlite("Data Source=TaxAssessment.db");
+            });
+
+
             services.AddControllers();
 
             services.AddScoped<ITaxCalculatorService, TaxCalculatorService>();
             services.AddScoped<ITaxTypeService, TaxTypeService>();
+            services.AddScoped<IRepository, EfRepository>();
 
             services.AddSwaggerGen(options =>
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Tax Assesment API", Version = "v1" })

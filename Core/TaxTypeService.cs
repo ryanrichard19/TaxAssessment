@@ -1,8 +1,8 @@
 ﻿using System;
-using BLL.Interfaces;
-using DAL.Enums;
+using Core.Interfaces;
+using SharedKernal.Enums;
 
-namespace BLL
+namespace Core
 {
 
     public class TaxTypeService : ITaxTypeService

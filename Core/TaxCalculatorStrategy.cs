@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BLL
+namespace Core
 {
     public class TaxCalculatorStrategy :ITaxCalculatorStrategy
     {

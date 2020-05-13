@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace Core
 {
 
     public class FlatRateTaxCalculatorStrategry : ITaxCalculatorStrategy

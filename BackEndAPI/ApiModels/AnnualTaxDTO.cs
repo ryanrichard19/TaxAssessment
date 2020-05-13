@@ -1,5 +1,5 @@
 ﻿using System;
-using DAL.Entities;
+using Infrastructure.Entities;
 
 namespace BackEndAPI.ApiModels
 {
@@ -12,16 +12,13 @@ namespace BackEndAPI.ApiModels
          public decimal AnnualIncome { get; set; }
          public decimal CalculatedTax { get; set; }
 
-        public static AnnualTaxDTO FromAnnualTax(AnnualTax annualTax)
+        public void FromAnnualTax(AnnualTax annualTax)
         {
-            return new AnnualTaxDTO()
-            {
-                Id = annualTax.Id,
-                CalculatedAt = annualTax.CalculatedAt,
-                PostalCode = annualTax.PostalCode,
-                AnnualIncome = annualTax.AnnualIncome,
-                CalculatedTax = annualTax.CalculatedTax
-            };
+            Id = annualTax.Id;
+            CalculatedAt = annualTax.CalculatedAt;
+            PostalCode = annualTax.PostalCode;
+            AnnualIncome = annualTax.AnnualIncome;
+            CalculatedTax = annualTax.CalculatedTax;
         }
 
     }

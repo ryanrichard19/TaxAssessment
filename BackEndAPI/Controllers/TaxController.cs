@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BackEndAPI.ApiModels;
-using BLL.Interfaces;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEndAPI.Controllers
@@ -24,20 +25,27 @@ namespace BackEndAPI.Controllers
         public async Task<ActionResult<AnnualTaxDTO>> Post(RequestAnnualTaxDTO input)
         {
             var taxType = _taxTypeService.GetTaxType(input.PostalCode);
-            var taxAmount = await _taxCalculatorService.CalculateTaxAsync(taxType, input.AnnualIncome);
+            var taxAmount = await _taxCalculatorService.CalculateTaxAsync(taxType, input.AnnualIncome, input.PostalCode );
 
-            var annualTaxDto = new AnnualTaxDTO
-            {
-                Id = 1,
-                CalculatedAt = DateTime.Now,
-                PostalCode = input.PostalCode,
-                AnnualIncome = input.AnnualIncome,
-                CalculatedTax = taxAmount
-            };
+          
 
+            var annualTax = await _taxCalculatorService.AddAnnualTax(taxType, input.AnnualIncome, taxAmount, input.PostalCode);
+            var annualTaxDto = new AnnualTaxDTO();
+            annualTaxDto.FromAnnualTax(annualTax);
             return annualTaxDto;
-       
+
+
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<AnnualTaxDTO>>> GetAnnualTax()
+        {
+            var DTO = new List<AnnualTaxDTO>();
+            await _taxCalculatorService.Test();
+          
+            return DTO;
+        }
+
 
     }
 }

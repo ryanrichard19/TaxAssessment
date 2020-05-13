@@ -1,5 +1,5 @@
 ﻿using System;
-namespace DAL.Entities
+namespace Infrastructure.Entities
 {
     public class TaxBracket: BaseEntity
     {

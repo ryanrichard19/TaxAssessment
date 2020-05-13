@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using DAL.Entities;
+using Infrastructure.Entities;
 
-namespace BLL
+namespace Core
 {
 
     public class ProgressiveTaxCalculatorStrategry : ITaxCalculatorStrategy

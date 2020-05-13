@@ -1,7 +1,6 @@
-﻿using System;
-using DAL.Enums;
+﻿using SharedKernal.Enums;
 
-namespace BLL.Interfaces
+namespace Core.Interfaces
 {
     public interface ITaxTypeService
     {

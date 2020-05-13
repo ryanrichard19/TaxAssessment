@@ -1,7 +1,7 @@
 ﻿using System;
-namespace DAL.Entities
+namespace Infrastructure.Entities
 {
-    public class AnnualTax: BaseEntity
+    public class AnnualTax : BaseEntity
     {
         public DateTime CalculatedAt { get; set; }
         public string PostalCode { get; set; }

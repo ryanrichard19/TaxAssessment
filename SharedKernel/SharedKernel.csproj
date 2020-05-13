@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <Compile Remove="Interfaces\IRepository.cs" />
   </ItemGroup>
 </Project>
