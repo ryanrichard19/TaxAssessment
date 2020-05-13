@@ -1,46 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using BackEndAPI.ApiModels;
+using BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BackEndAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class TaxController : Controller
+    [ApiController]
+    public class TaxController : ControllerBase
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly ITaxTypeService _taxTypeService;
+        private readonly ITaxCalculatorService _taxCalculatorService;
+
+        public TaxController(ITaxTypeService taxTypeService, ITaxCalculatorService taxCalculatorService)
         {
-            return new string[] { "value1", "value2" };
+            _taxTypeService = taxTypeService;
+            _taxCalculatorService = taxCalculatorService;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<ActionResult<AnnualTaxDTO>> Post(RequestAnnualTaxDTO input)
         {
+            var taxType = _taxTypeService.GetTaxType(input.PostalCode);
+            var taxAmount = await _taxCalculatorService.CalculateTaxAsync(taxType, input.AnnualIncome);
+
+            var annualTaxDto = new AnnualTaxDTO
+            {
+                Id = 1,
+                CalculatedAt = DateTime.Now,
+                PostalCode = input.PostalCode,
+                AnnualIncome = input.AnnualIncome,
+                CalculatedTax = taxAmount
+            };
+
+            return annualTaxDto;
+       
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

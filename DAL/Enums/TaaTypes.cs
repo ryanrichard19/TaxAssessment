@@ -1,10 +1,9 @@
-﻿using System;
-namespace DAL.Enums
+﻿namespace DAL.Enums
 {
-    public class TaaTypes
+    public enum TaxType
     {
-        public TaaTypes()
-        {
-        }
+        Progression,
+        FlatRate,
+        FlatValue
     }
 }
