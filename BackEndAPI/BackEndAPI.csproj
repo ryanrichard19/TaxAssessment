@@ -6,9 +6,6 @@
 
 
   <ItemGroup>
-    <Folder Include="ApiModels\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SharedKernel\SharedKernel.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>

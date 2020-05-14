@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Entities;
-using SharedKernal.Enums;
+using SharedKernel.Enums;
 
 
 namespace Core
@@ -53,12 +53,6 @@ namespace Core
 
             var newAnnualTax = await _repository.AddAsync<AnnualTax>(annualTaxEntity);
             return newAnnualTax;
-
-        }
-
-        public async Task Test()
-        {
-            await _repository.ListAsync<AnnualTax>();
         }
     }
 }

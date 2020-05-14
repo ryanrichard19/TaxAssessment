@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BackEndAPI.ApiModels
+namespace SharedKernel.ApiModels
 {
     public class RequestAnnualTaxDTO
     {

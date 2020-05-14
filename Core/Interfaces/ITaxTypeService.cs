@@ -1,4 +1,4 @@
-﻿using SharedKernal.Enums;
+﻿using SharedKernel.Enums;
 
 namespace Core.Interfaces
 {

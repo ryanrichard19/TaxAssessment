@@ -1,5 +1,4 @@
-﻿using System;
-namespace Infrastructure.Entities
+﻿namespace Infrastructure.Entities
 {
     public class TaxBracket: BaseEntity
     {

@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using BackEndAPI.ApiModels;
+
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using SharedKernel.ApiModels;
 
 namespace BackEndAPI.Controllers
 {
@@ -24,28 +24,34 @@ namespace BackEndAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<AnnualTaxDTO>> Post(RequestAnnualTaxDTO input)
         {
-            var taxType = _taxTypeService.GetTaxType(input.PostalCode);
-            var taxAmount = await _taxCalculatorService.CalculateTaxAsync(taxType, input.AnnualIncome, input.PostalCode );
+            try
+            {
+                var taxType = _taxTypeService.GetTaxType(input.PostalCode);
+                var taxAmount = await _taxCalculatorService.CalculateTaxAsync(taxType, input.AnnualIncome, input.PostalCode);
+                var annualTax = await _taxCalculatorService.AddAnnualTax(taxType, input.AnnualIncome, taxAmount, input.PostalCode);
 
-          
 
-            var annualTax = await _taxCalculatorService.AddAnnualTax(taxType, input.AnnualIncome, taxAmount, input.PostalCode);
-            var annualTaxDto = new AnnualTaxDTO();
-            annualTaxDto.FromAnnualTax(annualTax);
+            //This should be done with AutoMapper
+            var annualTaxDto = new AnnualTaxDTO()
+            {
+                Id = annualTax.Id,
+                CalculatedAt = annualTax.CalculatedAt,
+                PostalCode = annualTax.PostalCode,
+                AnnualIncome = annualTax.AnnualIncome,
+                CalculatedTax = annualTax.CalculatedTax
+            };
+                 
             return annualTaxDto;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            };
 
 
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnnualTaxDTO>>> GetAnnualTax()
-        {
-            var DTO = new List<AnnualTaxDTO>();
-            await _taxCalculatorService.Test();
-          
-            return DTO;
-        }
-
+     
 
     }
 }

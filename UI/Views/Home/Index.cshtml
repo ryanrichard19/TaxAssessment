@@ -1,0 +1,43 @@
+﻿@model UI.Models.TaxCalculatorModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="card">
+    <div class="card-header bg-primary text-white text-uppercase">
+        <h4>Tax Calculator</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Index">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PostalCode" class="lable-control"></label>
+                        <input asp-for="PostalCode" class="form-control" />
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AnnualIncome" class="lable-control"></label>
+                        <input asp-for="AnnualIncome" class="form-control" />
+                        <span asp-validation-for="AnnualIncome" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary rounded-0">Submit</button>
+                <button type="submit" value="Reset" formaction=@Url.Action("Reset") class="btn btn-primary rounded-0">Reset</button>
+            </div>
+        </form>
+    </div>
+    @if (Model != null)
+    {
+        <div class="ResponseMessage">
+            @Html.DisplayFor(x => x.ResponseMessage)
+        </div>
+    }
+
+</div>

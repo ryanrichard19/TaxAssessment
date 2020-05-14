@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEndAPI", "BackEndAPI\BackEndAPI.csproj", "{DDF94F02-201C-4767-9E4D-8CF627B0731E}"
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{337C49ED-4AFA-458E-87BE-0311B35D657D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{8DF368A0-593D-4C3A-B30F-D71696446644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{CAE6F639-CF92-4759-8C21-C8FB1C45083E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,5 +39,9 @@ Global
 		{8DF368A0-593D-4C3A-B30F-D71696446644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DF368A0-593D-4C3A-B30F-D71696446644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DF368A0-593D-4C3A-B30F-D71696446644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAE6F639-CF92-4759-8C21-C8FB1C45083E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAE6F639-CF92-4759-8C21-C8FB1C45083E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAE6F639-CF92-4759-8C21-C8FB1C45083E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAE6F639-CF92-4759-8C21-C8FB1C45083E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

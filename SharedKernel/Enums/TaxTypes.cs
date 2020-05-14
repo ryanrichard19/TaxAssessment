@@ -1,4 +1,4 @@
-﻿namespace SharedKernal.Enums
+﻿namespace SharedKernel.Enums
 {
     public enum TaxType
     {

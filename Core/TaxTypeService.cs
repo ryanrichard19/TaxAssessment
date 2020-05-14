@@ -1,6 +1,6 @@
 ﻿using System;
 using Core.Interfaces;
-using SharedKernal.Enums;
+using SharedKernel.Enums;
 
 namespace Core
 {
@@ -19,7 +19,7 @@ namespace Core
                 "A100" => TaxType.FlatValue,
                 "7000" => TaxType.FlatRate,
                 "1000" => TaxType.Progression,
-                _ => throw new InvalidOperationException("Invalid Postal entered!")
+                _ => throw new InvalidOperationException("Invalid postal code. Please enter a valid postal code.")
             };
 
             
