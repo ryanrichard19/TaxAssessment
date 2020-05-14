@@ -3,13 +3,14 @@
 The Database used is a Sqlite Database
     -used a database first approach
 The Backend API 
-    - shoul start up on https://localhost:5001/
+    - should start up on https://localhost:5001/
     - Implemented Swagger for testing of the API
     - Used Entity Framework as my ORM
     - Implemented a the statergy pattern for the tax calculator which allows for other tax types to be added easily.
     
 
 The UI Front End
+    - should start up on https://localhost:5003/
     - This was done using .net core MVC.
 
 
