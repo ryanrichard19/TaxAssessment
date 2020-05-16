@@ -8,7 +8,7 @@ namespace Infrastructure.Data
     {
         Task<List<T>> ListAsync<T>() where T : BaseEntity;
         Task<T> AddAsync<T>(T entity) where T : BaseEntity;
-
+        T Add<T>(T entity) where T : BaseEntity;
     }
 }
 

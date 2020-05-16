@@ -11,6 +11,9 @@ using Core;
 using Infrastructure;
 using Core.Interfaces;
 using Infrastructure.Data;
+using MediatR;
+using System.Reflection;
+using Infrastructure.Handlers;
 
 namespace BackEndAPI
 {
@@ -31,12 +34,14 @@ namespace BackEndAPI
                 options.UseSqlite("Data Source=TaxAssessment.db");
             });
 
-
             services.AddControllers();
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(NewAnnualTaxCommand).GetTypeInfo().Assembly);
 
-            services.AddScoped<ITaxCalculatorService, TaxCalculatorService>();
-            services.AddScoped<ITaxTypeService, TaxTypeService>();
-            services.AddScoped<IRepository, EfRepository>();
+            services.AddTransient<ITaxCalculatorService, TaxCalculatorService>();
+            services.AddTransient<ITaxTypeService, TaxTypeService>();
+            services.AddTransient<IRepository, EfRepository>();
+            services.AddTransient<IAnnualTaxRepository, AnnualTaxRepository>();
 
             services.AddSwaggerGen(options =>
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Tax Assesment API", Version = "v1" })

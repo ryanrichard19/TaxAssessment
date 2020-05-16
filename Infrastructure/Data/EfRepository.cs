@@ -28,6 +28,13 @@ namespace Infrastructure
             return entity;
         }
 
+        public T Add<T>(T entity) where T : BaseEntity
+        {
+            _applicationDbContext.Set<T>().AddAsync(entity);
+            _applicationDbContext.SaveChangesAsync();
+
+            return entity;
+        }
 
     }
 }

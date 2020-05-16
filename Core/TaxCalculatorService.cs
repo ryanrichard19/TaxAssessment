@@ -40,20 +40,6 @@ namespace Core
 
             return await taxCalculatorContext.CalculateTaxAsync(amount);
         }
-
-        public async Task<AnnualTax> AddAnnualTax(TaxType taxType, decimal amount, decimal taxAmount, string PostalCode)
-        {
-            AnnualTax annualTaxEntity = new AnnualTax
-            {
-                CalculatedAt = DateTime.Now,
-                PostalCode = PostalCode,
-                AnnualIncome = amount,
-                CalculatedTax = taxAmount
-            };
-
-            var newAnnualTax = await _repository.AddAsync<AnnualTax>(annualTaxEntity);
-            return newAnnualTax;
-        }
     }
 }
 
